@@ -16,20 +16,7 @@ const Server = http.Server(App);
 
 setupWebSocket(Server);
 
-if (process.env.SENTRY_DSN) {
-  Sentry.init({
-    dsn: process.env.SENTRY_DSN,
-  });
-}
-
-Mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
-
 App.use(helmet());
-
 App.use(cors());
 App.use(Express.json());
 
