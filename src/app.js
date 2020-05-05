@@ -4,6 +4,7 @@ import 'express-async-errors';
 import Express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import { isBoom } from '@hapi/boom';
 import http from 'http';
 
 import './database/mongodb';
@@ -49,14 +50,18 @@ if (process.env.NODE_ENV !== 'test') {
 
 App.use(routes);
 
-App.use((err, req, res, next) => {
-  const { payload } = err.output;
+App.use((err, _, res, next) => {
+  if (isBoom(err)) {
+    const { statusCode, payload } = err.output;
 
-  if (err.data) {
-    payload.details = err.data;
+    return res.status(statusCode).json({
+      ...payload,
+      ...err.data,
+      docs: process.env.DOCS_URL,
+    });
   }
 
-  return res.status(payload.statusCode).json(payload);
+  return next(err);
 });
 
 export default Server;
