@@ -1,16 +1,12 @@
 import 'dotenv/config';
-
 import 'express-async-errors';
+
 import Express from 'express';
-import Mongoose from 'mongoose';
-import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
-import Sentry from '@sentry/node';
-import redis from 'redis';
-import RateLimit from 'express-rate-limit';
-import RedisStore from 'rate-limit-redis';
+import http from 'http';
 
+import './database/mongodb';
 import routes from './routes';
 import { setupWebSocket } from './websocket';
 
