@@ -1,11 +1,14 @@
-import Api from './Api';
+import axios from 'axios';
+
 import parseStringAsArray from '../helpers/parseStringAsArray';
 import { sendMessage, findConnection } from '../../websocket';
 import Developer from '../models/Developer';
 
 class StoreDeveloper {
   async run({ github_username, techs, latitude, longitude }) {
-    const { data } = await Api.get(`/users/${github_username}`);
+    const { data } = await axios.get(
+      `https://api.github.com/users/${github_username}`
+    );
     // eslint-disable-next-line no-undef
     const { name = login, avatar_url, bio } = data;
 
