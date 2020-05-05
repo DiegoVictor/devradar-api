@@ -21,22 +21,7 @@ App.use(helmet());
 App.use(cors());
 App.use(Express.json());
 
-if (process.env.NODE_ENV !== 'test') {
-  App.use(
-    new RateLimit({
-      max: 100,
-      windowMs: 1000 * 60 * 15,
-      store: new RedisStore({
-        client: redis.createClient({
-          host: process.env.REDIS_HOST,
-          port: process.env.REDIS_PORT,
-        }),
-      }),
-    })
-  );
-}
-
-App.use(routes);
+App.use('/v1/', routes);
 
 App.use(errors());
 App.use((err, _, res, next) => {
