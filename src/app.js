@@ -5,6 +5,7 @@ import Express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { isBoom } from '@hapi/boom';
+import { errors } from 'celebrate';
 import http from 'http';
 
 import './database/mongodb';
@@ -37,6 +38,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 App.use(routes);
 
+App.use(errors());
 App.use((err, _, res, next) => {
   if (isBoom(err)) {
     const { statusCode, payload } = err.output;
