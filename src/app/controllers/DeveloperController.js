@@ -5,7 +5,22 @@ import UpdateDeveloper from '../services/UpdateDeveloper';
 
 class DeveloperController {
   async index(req, res) {
-    return res.json(await Developer.find());
+    const { page = 1 } = req.query;
+    const limit = 10;
+
+    const developers = await Developer.find(
+      {},
+      {
+        'location._id': false,
+        'location.type': false,
+        __v: false,
+      }
+    ).lean();
+
+    const count = await Developer.countDocuments();
+    res.header('X-Total-Count', count);
+
+    return res.json(developers);
   }
 
   async store(req, res) {
