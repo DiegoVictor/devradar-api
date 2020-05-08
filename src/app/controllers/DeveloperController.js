@@ -20,7 +20,11 @@ class DeveloperController {
     const count = await Developer.countDocuments();
     res.header('X-Total-Count', count);
 
-    return res.json(developers);
+    const pages_total = Math.ceil(count / limit);
+    if (pages_total > 1) {
+      res.links(paginationLinks(page, pages_total, resource_url));
+    }
+
   }
 
   async store(req, res) {
