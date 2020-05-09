@@ -6,20 +6,10 @@ class SearchController {
     const { latitude, longitude, techs } = req.query;
 
     return res.json(
-      await Developer.find({
-        techs: {
-          $in: parseStringAsArray(techs),
-        },
-        location: {
-          $near: {
-            $geometry: {
-              type: 'Point',
-              coordinates: [longitude, latitude],
-            },
-            $maxDistance: 10000,
-          },
-        },
-      })
+      developers.map(developer => ({
+        ...developer,
+        url: `${host_url}/v1/developers/${developer._id}`,
+      }))
     );
   }
 }

@@ -6,6 +6,7 @@ import paginationLinks from '../helpers/paginationLinks';
 
 class DeveloperController {
   async index(req, res) {
+    const { current_url } = req;
     const { page = 1 } = req.query;
     const limit = 10;
 
@@ -23,9 +24,15 @@ class DeveloperController {
 
     const pages_total = Math.ceil(count / limit);
     if (pages_total > 1) {
-      res.links(paginationLinks(page, pages_total, resource_url));
+      res.links(paginationLinks(page, pages_total, current_url));
     }
 
+    return res.json(
+      developers.map(developer => ({
+        ...developer,
+        url: `${current_url}/${developer._id}`,
+      }))
+    );
   }
 
   async store(req, res) {
