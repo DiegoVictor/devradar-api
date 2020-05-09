@@ -2,6 +2,7 @@ import Developer from '../models/Developer';
 import ExistsDeveloper from '../services/ExistsDeveloper';
 import StoreDeveloper from '../services/StoreDeveloper';
 import UpdateDeveloper from '../services/UpdateDeveloper';
+import paginationLinks from '../helpers/paginationLinks';
 
 class DeveloperController {
   async index(req, res) {
