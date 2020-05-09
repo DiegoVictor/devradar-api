@@ -55,7 +55,7 @@ class DeveloperController {
 
     await developer.remove();
 
-    return res.json(developer);
+    return res.sendStatus(204);
   }
 }
 
