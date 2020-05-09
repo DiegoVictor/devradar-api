@@ -35,13 +35,17 @@ class DeveloperController {
     );
   }
 
-  async store(req, res) {
-    const { github_username } = req.body;
+  async show(req, res) {
+    const { current_url } = req;
+    const { id } = req.params;
 
-    let developer = await Developer.findOne({ github_username });
-    if (!developer) {
-      developer = await StoreDeveloper.run(req.body);
-    }
+    const developer = await ExistsDeveloper.run({ id });
+
+    return res.json({
+      ...developer,
+      url: current_url,
+    });
+  }
 
     return res.json(developer);
   }
