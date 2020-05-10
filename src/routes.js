@@ -7,7 +7,11 @@ import IdValidator from './app/validators/IdValidator';
 import SearchParamsValidator from './app/validators/SearchParamsValidator';
 import DeveloperValidator from './app/validators/DeveloperValidator';
 
+import RateLimit from './app/middlewares/RateLimit';
+
 const Route = Router();
+
+Route.use(RateLimit);
 
 Route.get('/developers', DeveloperController.index);
 Route.post('/developers', DeveloperValidator, DeveloperController.store);
