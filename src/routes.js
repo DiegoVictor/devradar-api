@@ -14,6 +14,7 @@ const Route = Router();
 Route.use(RateLimit);
 
 Route.get('/developers', DeveloperController.index);
+Route.get('/developers/:id', IdValidator, DeveloperController.show);
 Route.post('/developers', DeveloperValidator, DeveloperController.store);
 Route.put(
   '/developers/:id',
