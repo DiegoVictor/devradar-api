@@ -10,14 +10,11 @@ class DeveloperController {
     const { page = 1 } = req.query;
     const limit = 10;
 
-    const developers = await Developer.find(
-      {},
-      {
-        'location._id': false,
-        'location.type': false,
-        __v: false,
-      }
-    ).lean();
+    const developers = await Developer.find(null, {
+      'location._id': false,
+      'location.type': false,
+      __v: false,
+    }).lean();
 
     const count = await Developer.countDocuments();
     res.header('X-Total-Count', count);
