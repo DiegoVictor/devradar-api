@@ -2,18 +2,18 @@ import request from 'supertest';
 import Mongoose from 'mongoose';
 import MockAdapter from 'axios-mock-adapter';
 import faker from 'faker';
+import axios from 'axios';
 
 import '../utils/extend';
 import app from '../../src/app';
-import Api from '../../src/app/services/Api';
 import factory from '../utils/factory';
 import Developer from '../../src/app/models/Developer';
 import { to, emit } from '../../__mocks__/socket.io';
 import Connection from '../../src/app/models/Connection';
 
-const api_mock = new MockAdapter(Api);
-
 describe('Developer', () => {
+  const api_mock = new MockAdapter(axios);
+
   beforeEach(async () => {
     await Developer.deleteMany();
   });
