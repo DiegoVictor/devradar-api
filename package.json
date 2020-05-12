@@ -22,8 +22,7 @@
     "rate-limit-redis": "^1.7.0",
     "rate-limiter-flexible": "^2.1.4",
     "redis": "^3.0.2",
-    "socket.io": "^2.3.0",
-    "yup": "^0.28.1"
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "^2.0.0",
