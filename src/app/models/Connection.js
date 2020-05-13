@@ -4,11 +4,19 @@ export default model(
   'Connection',
   new Schema({
     socket_id: String,
-    coordinates: {
+    location: {
       type: new Schema({
-        latitude: Number,
-        longitude: Number,
+        type: {
+          type: String,
+          enum: ['Point'],
+          required: true,
+        },
+        coordinates: {
+          type: [Number],
+          required: true,
+        },
       }),
+      index: '2dsphere',
     },
     techs: [String],
   })
