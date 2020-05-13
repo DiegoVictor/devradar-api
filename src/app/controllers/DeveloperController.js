@@ -1,6 +1,6 @@
 import Developer from '../models/Developer';
 import ExistsDeveloper from '../services/ExistsDeveloper';
-import FindOrStoreDeveloper from '../services/FindOrStoreDeveloper';
+import FindOrCreateDeveloper from '../services/FindOrCreateDeveloper';
 import UpdateDeveloper from '../services/UpdateDeveloper';
 import paginationLinks from '../helpers/paginationLinks';
 
@@ -45,8 +45,7 @@ class DeveloperController {
   }
 
   async store(req, res) {
-    const developer = await FindOrStoreDeveloper.run(req.body);
-
+    const developer = await FindOrCreateDeveloper.run(req.body);
     return res.json(developer);
   }
 
