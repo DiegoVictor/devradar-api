@@ -9,6 +9,7 @@ class ExistsDeveloper {
       'location.type': false,
       __v: false,
     }).lean();
+
     if (!developer) {
       throw notFound('Developer does not exists', { code: 144 });
     }
