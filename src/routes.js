@@ -15,7 +15,11 @@ Route.use(RateLimit);
 
 Route.get('/developers', DeveloperController.index);
 Route.get('/developers/:id', IdValidator, DeveloperController.show);
-Route.post('/developers', DeveloperValidator, DeveloperController.store);
+
+Route.get('/search', SearchParamsValidator, SearchController.index);
+
+Route.use(BearerAuth);
+
 Route.put(
   '/developers/:id',
   IdValidator,
@@ -23,7 +27,5 @@ Route.put(
   DeveloperController.update
 );
 Route.delete('/developers/:id', IdValidator, DeveloperController.destroy);
-
-Route.get('/search', SearchParamsValidator, SearchController.index);
 
 export default Route;

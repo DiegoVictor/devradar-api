@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+
 import Developer from '../models/Developer';
 import ExistsDeveloper from '../services/ExistsDeveloper';
 import FindOrCreateDeveloper from '../services/FindOrCreateDeveloper';
@@ -46,7 +48,12 @@ class DeveloperController {
 
   async store(req, res) {
     const developer = await FindOrCreateDeveloper.run(req.body);
-    return res.json(developer);
+    return res.json({
+      developer,
+      token: jwt.sign({ id: developer._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRATION_TIME,
+      }),
+    });
   }
 
   async update(req, res) {

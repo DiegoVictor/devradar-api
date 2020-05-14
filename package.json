@@ -18,6 +18,7 @@
     "express-async-errors": "^3.1.1",
     "helmet": "^3.21.2",
     "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.7",
     "rate-limit-redis": "^1.7.0",
     "rate-limiter-flexible": "^2.1.4",

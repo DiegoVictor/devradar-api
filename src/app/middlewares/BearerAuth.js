@@ -1,0 +1,22 @@
+import { promisify } from 'util';
+import jwt from 'jsonwebtoken';
+import { badRequest, unauthorized } from '@hapi/boom';
+
+export default async (req, _, next) => {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    throw badRequest('Token not provided', { code: 240 });
+  }
+
+  const [, token] = authorization.split(' ');
+
+  try {
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    req.ngo_id = decoded.id;
+
+    return next();
+  } catch (err) {
+    throw unauthorized('Token invalid', 'sample', { code: 241 });
+  }
+};
