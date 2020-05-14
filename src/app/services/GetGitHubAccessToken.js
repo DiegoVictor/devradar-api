@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { serverUnavailable } from '@hapi/boom';
 
 class GetGitHubAccessToken {
   async run({ code }) {
@@ -21,8 +22,17 @@ class GetGitHubAccessToken {
       );
 
       return access_token;
-    } catch (err) {
-      // TODO
+    } catch ({ response: { status, statusText } }) {
+      throw serverUnavailable(
+        'An error ocurred while trying to exchange an access token',
+        {
+          code: 531,
+          details: {
+            status,
+            statusText,
+          },
+        }
+      );
     }
   }
 }
