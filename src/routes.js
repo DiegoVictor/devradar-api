@@ -8,6 +8,10 @@ import SearchParamsValidator from './app/validators/SearchParamsValidator';
 import DeveloperValidator from './app/validators/DeveloperValidator';
 
 import RateLimit from './app/middlewares/RateLimit';
+import BearerAuth from './app/middlewares/BearerAuth';
+
+import { BruteForce } from './database/redis';
+import config from './config/bruteforce';
 
 const Route = Router();
 
@@ -15,6 +19,12 @@ Route.use(RateLimit);
 
 Route.get('/developers', DeveloperController.index);
 Route.get('/developers/:id', IdValidator, DeveloperController.show);
+Route.post(
+  '/developers',
+  new BruteForce(config).prevent,
+  DeveloperValidator,
+  DeveloperController.store
+);
 
 Route.get('/search', SearchParamsValidator, SearchController.index);
 

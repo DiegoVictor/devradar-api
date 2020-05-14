@@ -1,5 +1,6 @@
 import { createClient } from 'redis';
 import { RateLimiterMemory, RateLimiterRedis } from 'rate-limiter-flexible';
+import ExpressBruteFlexible from 'rate-limiter-flexible/lib/ExpressBruteFlexible';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createClient as mockClient } from 'redis-mock';
 
@@ -20,6 +21,20 @@ export function RateLimiter(opts) {
   }
 
   return new RateLimiterRedis({ redis, ...opts });
+}
+
+export function BruteForce(opts) {
+  if (process.env.NODE_ENV === 'test') {
+    return new ExpressBruteFlexible(
+      ExpressBruteFlexible.LIMITER_TYPES.MEMORY,
+      opts
+    );
+  }
+
+  return new ExpressBruteFlexible(ExpressBruteFlexible.LIMITER_TYPES.REDIS, {
+    ...opts,
+    storeClient: redis,
+  });
 }
 
 export default redis;
