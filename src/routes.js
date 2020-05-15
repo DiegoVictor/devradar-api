@@ -23,7 +23,7 @@ Route.get('/developers/:id', IdValidator, DeveloperController.show);
 Route.post(
   '/developers',
   new BruteForce(config).prevent,
-  DeveloperValidator,
+  DeveloperValidator.store,
   DeveloperController.store
 );
 
@@ -34,7 +34,7 @@ Route.use(BearerAuth);
 Route.put(
   '/developers/:id',
   IdValidator,
-  DeveloperValidator,
+  DeveloperValidator.update,
   DeveloperController.update
 );
 Route.delete('/developers/:id', IdValidator, DeveloperController.destroy);
