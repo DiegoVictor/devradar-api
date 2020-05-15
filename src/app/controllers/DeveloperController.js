@@ -16,7 +16,11 @@ class DeveloperController {
       'location._id': false,
       'location.type': false,
       __v: false,
-    }).lean();
+    })
+      .sort('github_username')
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .lean();
 
     const count = await Developer.countDocuments();
     res.header('X-Total-Count', count);
