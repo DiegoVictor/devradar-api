@@ -6,6 +6,7 @@ import SearchController from './app/controllers/SearchController';
 import IdValidator from './app/validators/IdValidator';
 import SearchParamsValidator from './app/validators/SearchParamsValidator';
 import DeveloperValidator from './app/validators/DeveloperValidator';
+import PageValidator from './app/validators/PageValidator';
 
 import RateLimit from './app/middlewares/RateLimit';
 import BearerAuth from './app/middlewares/BearerAuth';
@@ -17,7 +18,7 @@ const Route = Router();
 
 Route.use(RateLimit);
 
-Route.get('/developers', DeveloperController.index);
+Route.get('/developers', PageValidator, DeveloperController.index);
 Route.get('/developers/:id', IdValidator, DeveloperController.show);
 Route.post(
   '/developers',
