@@ -26,7 +26,7 @@ class SearchController {
         'location.type': false,
         __v: false,
       }
-    );
+    ).lean();
 
     return res.json(
       developers.map(developer => ({

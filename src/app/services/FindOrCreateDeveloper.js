@@ -19,7 +19,14 @@ class FindOrCreateDeveloper {
 
     techs = parseStringAsArray(techs);
 
-    let developer = await Developer.findOne({ github_username });
+    let developer = await Developer.findOne(
+      { github_username },
+      {
+        'location._id': false,
+        'location.type': false,
+        __v: false,
+      }
+    ).lean();
     if (!developer) {
       developer = await Developer.create({
         name,
@@ -32,6 +39,10 @@ class FindOrCreateDeveloper {
           coordinates: [longitude, latitude],
         },
       });
+
+      delete developer.location._id;
+      delete developer.location.type;
+      delete developer.__v;
 
       const connections = await Connection.find(
         {
