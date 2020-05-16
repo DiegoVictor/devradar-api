@@ -24,5 +24,6 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'no-param-reassign': 'off',
+    'default-case': 'off',
   },
 };
