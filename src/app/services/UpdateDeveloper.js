@@ -15,7 +15,13 @@ class UpdateDeveloper {
       }
     });
 
-    await developer.save();
+    if (typeof latitude === 'number' && typeof longitude === 'number') {
+      developer.location = {
+        type: 'Point',
+        coordinates: [longitude, latitude],
+      };
+    }
+
 
     return developer;
   }
