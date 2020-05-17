@@ -61,11 +61,11 @@ class DeveloperController {
   }
 
   async update(req, res) {
-    const { id } = req.params;
+    const { id } = req;
 
     return res.json(
       await UpdateDeveloper.run({
-        developer: await ExistsDeveloper.run({ id }),
+        id,
         ...req.body,
       })
     );

@@ -1,10 +1,12 @@
 import parseStringAsArray from '../helpers/parseStringAsArray';
+import ExistsDeveloper from './ExistsDeveloper';
 
 class UpdateDeveloper {
-  async run(params) {
-    const { developer } = params;
-    if (typeof params.techs === 'string') {
-      developer.techs = parseStringAsArray(params.techs);
+  async run({ id, techs, latitude, longitude, ...params }) {
+    let developer = await ExistsDeveloper.run({ id });
+
+    if (typeof techs === 'string') {
+      developer.techs = parseStringAsArray(techs);
     }
 
     ['name', 'avatar_url', 'bio'].forEach(field => {
