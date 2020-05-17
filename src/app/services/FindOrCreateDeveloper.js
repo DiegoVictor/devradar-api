@@ -19,16 +19,12 @@ class FindOrCreateDeveloper {
 
     techs = parseStringAsArray(techs);
 
-    let developer = await Developer.findOne(
+    const {
+      value: developer,
+      lastErrorObject: { updatedExisting },
+    } = await Developer.findOneAndUpdate(
       { github_username },
       {
-        'location._id': false,
-        'location.type': false,
-        __v: false,
-      }
-    ).lean();
-    if (!developer) {
-      developer = await Developer.create({
         name,
         avatar_url,
         bio,
@@ -38,16 +34,24 @@ class FindOrCreateDeveloper {
           type: 'Point',
           coordinates: [longitude, latitude],
         },
-      });
+      },
+      {
+        new: true,
+        upsert: true,
+        rawResult: true,
+        fields: {
+          'location._id': false,
+          'location.type': false,
+          __v: false,
+        },
+      }
+    ).lean();
 
-      delete developer.location._id;
-      delete developer.location.type;
-      delete developer.__v;
-
+    if (!updatedExisting) {
       const connections = await Connection.find(
         {
           techs: {
-            $in: Array.isArray(techs) ? techs : parseStringAsArray(techs),
+            $in: techs,
           },
           location: {
             $near: {
@@ -65,6 +69,7 @@ class FindOrCreateDeveloper {
           __v: false,
         }
       );
+
       connections.forEach(({ socket_id }) => {
         emit(socket_id, 'new_developer', developer);
       });
