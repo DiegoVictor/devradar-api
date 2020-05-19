@@ -24,7 +24,7 @@ class GetGitHubAccessToken {
       return access_token;
     } catch ({ response: { status, statusText } }) {
       throw serverUnavailable(
-        'An error ocurred while trying to exchange an access token',
+        "An error ocurred while trying to exchange a GitHub's access token",
         {
           code: 531,
           details: {
