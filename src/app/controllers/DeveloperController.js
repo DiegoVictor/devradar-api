@@ -72,9 +72,9 @@ class DeveloperController {
   }
 
   async destroy(req, res) {
-    const { id } = req.params;
-    const developer = await ExistsDeveloper.run({ id });
+    const { id } = req;
 
+    const developer = await ExistsDeveloper.run({ id });
     await developer.remove();
 
     return res.sendStatus(204);

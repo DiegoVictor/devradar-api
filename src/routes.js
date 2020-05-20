@@ -31,12 +31,7 @@ Route.get('/search', SearchParamsValidator, SearchController.index);
 
 Route.use(BearerAuth);
 
-Route.put(
-  '/developers/:id',
-  IdValidator,
-  DeveloperValidator.update,
-  DeveloperController.update
-);
-Route.delete('/developers/:id', IdValidator, DeveloperController.destroy);
+Route.put('/developers', DeveloperValidator.update, DeveloperController.update);
+Route.delete('/developers', DeveloperController.destroy);
 
 export default Route;
