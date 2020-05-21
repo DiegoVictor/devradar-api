@@ -13,19 +13,21 @@ import BearerAuth from './app/middlewares/BearerAuth';
 
 import { BruteForce } from './database/redis';
 import config from './config/bruteforce';
+import SessionController from './app/controllers/SessionController';
 
 const Route = Router();
+
+Route.post(
+  '/sessions',
+  new BruteForce(config).prevent,
+  SessionController.store
+);
 
 Route.use(RateLimit);
 
 Route.get('/developers', PageValidator, DeveloperController.index);
 Route.get('/developers/:id', IdValidator, DeveloperController.show);
-Route.post(
-  '/developers',
-  new BruteForce(config).prevent,
-  DeveloperValidator.store,
-  DeveloperController.store
-);
+Route.post('/developers', DeveloperValidator.store, DeveloperController.store);
 
 Route.get('/search', SearchParamsValidator, SearchController.index);
 
