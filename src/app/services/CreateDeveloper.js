@@ -19,7 +19,7 @@ class CreateDeveloper {
     });
 
     if (await Developer.findOne({ github_username })) {
-      throw badRequest('You are already registered!', { code: 140 });
+      throw badRequest('You are already registered', { code: 140 });
     }
 
     const developer = {
