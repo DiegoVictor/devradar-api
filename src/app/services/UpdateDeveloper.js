@@ -1,4 +1,4 @@
-import parseStringAsArray from '../helpers/parseStringAsArray';
+import parseStringToArray from '../helpers/parseStringToArray';
 import ExistsDeveloper from './ExistsDeveloper';
 
 class UpdateDeveloper {

@@ -1,5 +1,5 @@
 import Developer from '../models/Developer';
-import parseStringAsArray from '../helpers/parseStringAsArray';
+import parseStringToArray from '../helpers/parseStringToArray';
 
 class SearchController {
   async index(req, res) {
@@ -9,7 +9,7 @@ class SearchController {
     const developers = await Developer.find(
       {
         techs: {
-          $in: Array.isArray(techs) ? techs : parseStringAsArray(techs),
+          $in: Array.isArray(techs) ? techs : parseStringToArray(techs),
         },
         location: {
           $near: {

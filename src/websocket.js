@@ -1,7 +1,7 @@
 import socketio from 'socket.io';
 
 import Connection from './app/models/Connection';
-import parseStringAsArray from './app/helpers/parseStringAsArray';
+import parseStringToArray from './app/helpers/parseStringToArray';
 
 let io;
 
@@ -21,7 +21,7 @@ export function setupWebSocket(server) {
         type: 'Point',
         coordinates: [Number(longitude), Number(latitude)],
       },
-      techs: parseStringAsArray(techs),
+      techs: parseStringToArray(techs),
     });
   });
 }
