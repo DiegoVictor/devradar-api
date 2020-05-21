@@ -1,7 +1,7 @@
 import createJWT from '../helpers/createJWT';
 import Developer from '../models/Developer';
 import ExistsDeveloper from '../services/ExistsDeveloper';
-import FindOrCreateDeveloper from '../services/FindOrCreateDeveloper';
+import CreateDeveloper from '../services/CreateDeveloper';
 import UpdateDeveloper from '../services/UpdateDeveloper';
 import paginationLinks from '../helpers/paginationLinks';
 
@@ -50,7 +50,7 @@ class DeveloperController {
   }
 
   async store(req, res) {
-    const developer = await FindOrCreateDeveloper.run(req.body);
+    const developer = await CreateDeveloper.run(req.body);
     return res.json({
       developer,
       token: createJWT(developer._id),
