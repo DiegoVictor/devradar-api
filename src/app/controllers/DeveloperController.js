@@ -44,7 +44,7 @@ class DeveloperController {
     const developer = await ExistsDeveloper.run({ id });
 
     return res.json({
-      ...developer,
+      ...developer.toObject(),
       url: current_url,
     });
   }
