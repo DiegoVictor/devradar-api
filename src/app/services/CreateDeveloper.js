@@ -22,26 +22,29 @@ class CreateDeveloper {
       throw badRequest('You are already registered!', { code: 140 });
     }
 
-    const developer = await Developer.create({
+    const developer = {
       name,
       avatar_url,
       bio,
       github_username,
       techs: parseStringToArray(techs),
       location: {
-        type: 'Point',
-        coordinates: [longitude, latitude],
-      },
-    });
-
-    await EmitDeveloper.run({ developer });
-
-    return {
-      ...developer.toObject({ versionKey: false }),
-      location: {
         coordinates: [longitude, latitude],
       },
     };
+
+    const { _id } = await Developer.create({
+      ...developer,
+      location: {
+        type: 'Point',
+        ...developer.location,
+      },
+    });
+    developer._id = _id;
+
+    await EmitDeveloper.run({ developer });
+
+    return developer;
   }
 }
 
