@@ -1,27 +1,43 @@
 import parseStringToArray from '../helpers/parseStringToArray';
 import ExistsDeveloper from './ExistsDeveloper';
+import EmitDeveloper from './EmitDeveloper';
+import Developer from '../models/Developer';
 
 class UpdateDeveloper {
-  async run({ id, techs, latitude, longitude, ...params }) {
-    let developer = await ExistsDeveloper.run({ id });
+  async run({ id, techs, latitude, longitude, name, avatar_url, bio }) {
+    await ExistsDeveloper.run({ id });
 
-    if (typeof techs === 'string') {
-      developer.techs = parseStringAsArray(techs);
-    }
-
-    ['name', 'avatar_url', 'bio'].forEach(field => {
-      if (typeof params[field] === 'string') {
-        developer[field] = params[field];
-      }
-    });
-
-    if (typeof latitude === 'number' && typeof longitude === 'number') {
-      developer.location = {
+    let location;
+    if (latitude && longitude) {
+      location = {
         type: 'Point',
         coordinates: [longitude, latitude],
       };
     }
 
+    const developer = await Developer.findByIdAndUpdate(
+      id,
+      {
+        name,
+        avatar_url,
+        bio,
+        techs: techs ? parseStringToArray(techs) : techs,
+        location,
+      },
+      {
+        omitUndefined: true,
+        projection: {
+          'location._id': false,
+          'location.type': false,
+          __v: false,
+        },
+        new: true,
+      }
+    ).lean();
+
+    if (location) {
+      await EmitDeveloper.run({ developer });
+    }
 
     return developer;
   }
