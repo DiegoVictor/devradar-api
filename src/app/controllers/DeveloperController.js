@@ -1,4 +1,4 @@
-import createJWT from '../helpers/createJWT';
+import createToken from '../helpers/createToken';
 import Developer from '../models/Developer';
 import ExistsDeveloper from '../services/ExistsDeveloper';
 import CreateDeveloper from '../services/CreateDeveloper';
@@ -53,7 +53,7 @@ class DeveloperController {
     const developer = await CreateDeveloper.run(req.body);
     return res.json({
       developer,
-      token: createJWT(developer._id),
+      token: createToken(developer._id),
     });
   }
 

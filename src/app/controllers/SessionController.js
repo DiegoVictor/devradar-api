@@ -1,6 +1,6 @@
 import { notFound } from '@hapi/boom';
 
-import createJWT from '../helpers/createJWT';
+import createToken from '../helpers/createToken';
 import Developer from '../models/Developer';
 import GetGitHubAccessToken from '../services/GetGitHubAccessToken';
 import GetGitHubUser from '../services/GetGitHubUser';
@@ -24,7 +24,7 @@ class SessionController {
 
     return res.json({
       developer,
-      token: createJWT(developer._id),
+      token: createToken(developer._id),
     });
   }
 }
