@@ -26,7 +26,7 @@ class EmitDeveloper {
     );
 
     connections.forEach(({ socket_id }) => {
-      emit(socket_id, 'new_developer', developer);
+      emit(socket_id, 'developer', developer);
     });
   }
 }
