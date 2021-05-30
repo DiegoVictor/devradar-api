@@ -3,7 +3,7 @@ import parseStringToArray from '../helpers/parseStringToArray';
 
 class SearchController {
   async index(req, res) {
-    const { host_url } = req;
+    const { hostUrl } = req;
     const { techs, longitude, latitude } = req.query;
 
     const developers = await Developer.find(
@@ -31,10 +31,10 @@ class SearchController {
     return res.json(
       developers.map(developer => ({
         ...developer,
-        url: `${host_url}/v1/developers/${developer._id}`,
+        url: `${hostUrl}/v1/developers/${developer._id}`,
       }))
     );
   }
 }
 
-export default new SearchController();
+export default SearchController;

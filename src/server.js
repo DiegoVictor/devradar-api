@@ -1,3 +1,3 @@
-import Server from './app';
+import app from './app';
 
-Server.listen(process.env.APP_PORT);
+app.listen(process.env.APP_PORT);
