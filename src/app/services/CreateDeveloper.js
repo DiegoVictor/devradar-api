@@ -6,14 +6,19 @@ import GetGitHubUser from './GetGitHubUser';
 import GetGitHubAccessToken from './GetGitHubAccessToken';
 import EmitDeveloper from './EmitDeveloper';
 
+const emitDeveloper = new EmitDeveloper();
+const getGitHubAccessToken = new GetGitHubAccessToken();
+const getGitHubUser = new GetGitHubUser();
+
 class CreateDeveloper {
   async execute({ code, techs, latitude, longitude }) {
+    const access_token = await getGitHubAccessToken.execute({ code });
     const {
       login: github_username,
       name = github_username,
       avatar_url,
       bio,
-    } = await GetGitHubUser.run({
+    } = await getGitHubUser.execute({
       access_token,
     });
 
@@ -41,7 +46,7 @@ class CreateDeveloper {
     });
     developer._id = _id;
 
-    await EmitDeveloper.run({ developer });
+    await emitDeveloper.execute({ developer });
 
     return developer;
   }
