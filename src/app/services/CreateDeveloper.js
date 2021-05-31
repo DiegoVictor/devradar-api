@@ -7,8 +7,7 @@ import GetGitHubAccessToken from './GetGitHubAccessToken';
 import EmitDeveloper from './EmitDeveloper';
 
 class CreateDeveloper {
-  async run({ code, techs, latitude, longitude }) {
-    const access_token = await GetGitHubAccessToken.run({ code });
+  async execute({ code, techs, latitude, longitude }) {
     const {
       login: github_username,
       name = github_username,

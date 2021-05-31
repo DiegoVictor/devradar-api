@@ -2,7 +2,7 @@ import { emit } from '../../websocket';
 import Connection from '../models/Connection';
 
 class EmitDeveloper {
-  async run({ developer }) {
+  async execute({ developer }) {
     const connections = await Connection.find(
       {
         techs: {

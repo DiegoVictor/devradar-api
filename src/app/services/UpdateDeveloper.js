@@ -4,8 +4,7 @@ import EmitDeveloper from './EmitDeveloper';
 import Developer from '../models/Developer';
 
 class UpdateDeveloper {
-  async run({ id, techs, latitude, longitude, name, avatar_url, bio }) {
-    await ExistsDeveloper.run({ id });
+  async execute({ id, techs, latitude, longitude, name, avatar_url, bio }) {
 
     let location;
     if (latitude && longitude) {
