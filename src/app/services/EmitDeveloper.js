@@ -31,4 +31,4 @@ class EmitDeveloper {
   }
 }
 
-export default new EmitDeveloper();
+export default EmitDeveloper;

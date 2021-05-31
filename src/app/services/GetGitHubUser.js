@@ -26,4 +26,4 @@ class GetGitHubUser {
   }
 }
 
-export default new GetGitHubUser();
+export default GetGitHubUser;

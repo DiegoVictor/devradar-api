@@ -42,4 +42,4 @@ class UpdateDeveloper {
   }
 }
 
-export default new UpdateDeveloper();
+export default UpdateDeveloper;

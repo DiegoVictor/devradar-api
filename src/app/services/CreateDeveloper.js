@@ -47,4 +47,4 @@ class CreateDeveloper {
   }
 }
 
-export default new CreateDeveloper();
+export default CreateDeveloper;

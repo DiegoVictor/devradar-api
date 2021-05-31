@@ -78,4 +78,4 @@ class DeveloperController {
   }
 }
 
-export default new DeveloperController();
+export default DeveloperController;

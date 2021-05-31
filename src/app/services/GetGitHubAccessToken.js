@@ -37,4 +37,4 @@ class GetGitHubAccessToken {
   }
 }
 
-export default new GetGitHubAccessToken();
+export default GetGitHubAccessToken;
