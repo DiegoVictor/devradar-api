@@ -2,7 +2,7 @@ import axios from 'axios';
 import { serverUnavailable } from '@hapi/boom';
 
 class GetGitHubAccessToken {
-  async run({ code }) {
+  async execute({ code }) {
     try {
       const {
         data: { access_token },
