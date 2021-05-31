@@ -11,6 +11,6 @@ const mongod = new MongoMemoryServer({
 });
 
 module.exports = async () => {
-  process.env.MONGO_URL = await mongod.getConnectionString();
+  process.env.MONGO_URL = await mongod.getUri();
   global.__MONGOD__ = mongod;
 };
