@@ -9,7 +9,9 @@ import SearchParamsValidator from './app/validators/SearchParamsValidator';
 import PageValidator from './app/validators/PageValidator';
 import DeveloperValidator from './app/validators/DeveloperValidator';
 
-import SessionController from './app/controllers/SessionController';
+const sessionController = new SessionController();
+const developerController = new DeveloperController();
+const searchController = new SearchController();
 
 const Route = Router();
 
