@@ -5,16 +5,19 @@ import Developer from '../models/Developer';
 import GetGitHubAccessToken from '../services/GetGitHubAccessToken';
 import GetGitHubUser from '../services/GetGitHubUser';
 
+const getGitHubUser = new GetGitHubUser();
+const getGitHubAccessToken = new GetGitHubAccessToken();
+
 class SessionController {
   async store(req, res) {
     const { code } = req.body;
-    const access_token = await GetGitHubAccessToken.run({ code });
-    const { login: github_username } = await GetGitHubUser.run({
-      access_token,
+    const accessToken = await getGitHubAccessToken.execute({ code });
+    const { login: githubUsername } = await getGitHubUser.execute({
+      access_token: accessToken,
     });
 
     const developer = await Developer.findOne(
-      { github_username },
+      { github_username: githubUsername },
       { 'location._id': false, 'location.type': false, __v: false }
     ).lean();
 

@@ -5,6 +5,10 @@ import CreateDeveloper from '../services/CreateDeveloper';
 import UpdateDeveloper from '../services/UpdateDeveloper';
 import paginationLinks from '../helpers/paginationLinks';
 
+const existsDeveloper = new ExistsDeveloper();
+const createDeveloper = new CreateDeveloper();
+const updateDeveloper = new UpdateDeveloper();
+
 class DeveloperController {
   async index(req, res) {
     const { current_url } = req;
@@ -41,7 +45,7 @@ class DeveloperController {
     const { current_url } = req;
     const { id } = req.params;
 
-    const developer = await ExistsDeveloper.run({ id });
+    const developer = await existsDeveloper.execute({ id });
 
     return res.json({
       ...developer.toObject(),
@@ -50,7 +54,7 @@ class DeveloperController {
   }
 
   async store(req, res) {
-    const developer = await CreateDeveloper.run(req.body);
+    const developer = await createDeveloper.execute(req.body);
     return res.json({
       developer,
       token: createToken(developer._id),
@@ -61,7 +65,7 @@ class DeveloperController {
     const { id } = req;
 
     return res.json(
-      await UpdateDeveloper.run({
+      await updateDeveloper.execute({
         id,
         ...req.body,
       })
@@ -71,7 +75,7 @@ class DeveloperController {
   async destroy(req, res) {
     const { id } = req;
 
-    const developer = await ExistsDeveloper.run({ id });
+    const developer = await existsDeveloper.execute({ id });
     await developer.remove();
 
     return res.sendStatus(204);
