@@ -1,12 +1,13 @@
 import { Router } from 'express';
 
 import DeveloperController from './app/controllers/DeveloperController';
+import SessionController from './app/controllers/SessionController';
 import SearchController from './app/controllers/SearchController';
-
+import BearerAuth from './app/middlewares/BearerAuth';
 import IdValidator from './app/validators/IdValidator';
 import SearchParamsValidator from './app/validators/SearchParamsValidator';
-import DeveloperValidator from './app/validators/DeveloperValidator';
 import PageValidator from './app/validators/PageValidator';
+import DeveloperValidator from './app/validators/DeveloperValidator';
 
 import SessionController from './app/controllers/SessionController';
 
