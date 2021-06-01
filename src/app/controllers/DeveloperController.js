@@ -11,7 +11,7 @@ const updateDeveloper = new UpdateDeveloper();
 
 class DeveloperController {
   async index(req, res) {
-    const { current_url } = req;
+    const { currentUrl } = req;
     const { page = 1 } = req.query;
     const limit = 10;
 
@@ -30,26 +30,26 @@ class DeveloperController {
 
     const pages_total = Math.ceil(count / limit);
     if (pages_total > 1) {
-      res.links(paginationLinks(page, pages_total, current_url));
+      res.links(paginationLinks(page, pages_total, currentUrl));
     }
 
     return res.json(
       developers.map(developer => ({
         ...developer,
-        url: `${current_url}/${developer._id}`,
+        url: `${currentUrl}/${developer._id}`,
       }))
     );
   }
 
   async show(req, res) {
-    const { current_url } = req;
+    const { currentUrl } = req;
     const { id } = req.params;
 
     const developer = await existsDeveloper.execute({ id });
 
     return res.json({
       ...developer.toObject(),
-      url: current_url,
+      url: currentUrl,
     });
   }
 
