@@ -15,17 +15,17 @@ const searchController = new SearchController();
 
 const Route = Router();
 
-Route.post('/sessions', SessionController.store);
+Route.post('/sessions', sessionController.store);
 
-Route.get('/developers', PageValidator, DeveloperController.index);
-Route.get('/developers/:id', IdValidator, DeveloperController.show);
-Route.post('/developers', DeveloperValidator.store, DeveloperController.store);
+Route.get('/developers', PageValidator, developerController.index);
+Route.get('/developers/:id', IdValidator, developerController.show);
+Route.post('/developers', DeveloperValidator.store, developerController.store);
 
-Route.get('/search', SearchParamsValidator, SearchController.index);
+Route.get('/search', SearchParamsValidator, searchController.index);
 
 Route.use(BearerAuth);
 
-Route.put('/developers', DeveloperValidator.update, DeveloperController.update);
-Route.delete('/developers', DeveloperController.destroy);
+Route.put('/developers', DeveloperValidator.update, developerController.update);
+Route.delete('/developers', developerController.destroy);
 
 export default Route;
