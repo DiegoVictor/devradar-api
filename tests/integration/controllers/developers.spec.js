@@ -234,7 +234,7 @@ describe('Developer', () => {
     const { _id } = await Developer.findOne();
 
     expect(to).toHaveBeenCalledWith(socket_id);
-    expect(emit).toHaveBeenCalledWith('new_developer', {
+    expect(emit).toHaveBeenCalledWith('developer', {
       _id,
       name,
       bio,
@@ -352,7 +352,8 @@ describe('Developer', () => {
   it('should not be able to retrieve an user from github', async () => {
     axios.onGet('https://api.github.com/user').reply(400, 'Bad Request');
 
-    GetGitHubUser.run({ access_token }).catch(err => {
+    const getGitHubUser = new GetGitHubUser();
+    getGitHubUser.execute({ access_token }).catch(err => {
       expect({ ...err }).toStrictEqual({
         data: {
           code: 532,
@@ -382,7 +383,8 @@ describe('Developer', () => {
       .onGet('https://github.com/login/oauth/access_token')
       .reply(400, 'Bad Request');
 
-    GetGitHubAccessToken.run({ code }).catch(err => {
+    const getGitHubAccessToken = new GetGitHubAccessToken();
+    getGitHubAccessToken.execute({ code }).catch(err => {
       expect({ ...err }).toStrictEqual({
         data: {
           code: 531,
