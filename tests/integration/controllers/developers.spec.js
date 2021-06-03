@@ -157,7 +157,6 @@ describe('Developer', () => {
 
   it('should not be able to store a developer that already is registered', async () => {
     const {
-      name,
       bio,
       avatar_url,
       github_username,
@@ -172,7 +171,6 @@ describe('Developer', () => {
       .onGet(`https://api.github.com/user`)
       .reply(200, {
         login: github_username,
-        name,
         avatar_url,
         bio,
       });
