@@ -1,9 +1,9 @@
 # [API] DevRadar
 ![CircleCI](https://img.shields.io/circleci/build/github/DiegoVictor/devradar-api?style=flat-square&logo=circleci)
-[![nodemon](https://img.shields.io/badge/nodemon-2.0.2-76d04b?style=flat-square&logo=nodemon)](https://nodemon.io/)
+[![nodemon](https://img.shields.io/badge/nodemon-2.0.7-76d04b?style=flat-square&logo=nodemon)](https://nodemon.io/)
 [![eslint](https://img.shields.io/badge/eslint-6.8.0-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
 [![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
-[![jest](https://img.shields.io/badge/jest-25.2.7-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
+[![jest](https://img.shields.io/badge/jest-25.5.4-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
 [![coverage](https://img.shields.io/codecov/c/gh/DiegoVictor/devradar-api?logo=codecov&style=flat-square)](https://codecov.io/gh/DiegoVictor/devradar-api)
 [![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/DiegoVictor/devradar-api/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)<br>
