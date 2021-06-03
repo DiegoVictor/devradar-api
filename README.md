@@ -42,10 +42,10 @@ $ npm install
 > Was installed and configured the [`eslint`](https://eslint.org/) and [`prettier`](https://prettier.io/) to keep the code clean and patterned.
 
 ## Configuring
-The application use just one database: [MongoDB](https://www.mongodb.com). For the fastest setup is recommended to use [docker](https://www.docker.com), see below how to setup ever database.
+The application use just one database: [MongoDB](https://www.mongodb.com). For the fastest setup is recommended to use [docker](https://www.docker.com), see below how to setup the database.
 
 ### MongoDB
-Store opportunities sent to Bling, reports and the users utilized by application. You can create a MongoDB container like so:
+Store all application data. You can create a MongoDB container like so:
 ```
 $ docker run --name devradar-mongo -d -p 27017:27017 mongo
 ```
@@ -62,7 +62,7 @@ In this file you may configure your MongoDB database connection, JWT settings, t
 |MONGO_URL|MongoDB's server url.|`mongodb://127.0.0.1:27017/devradar`
 |GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET|GitHub's OAuth App credentials. See [GitHub OAuth App](#github-oauth-app) for more information.| -
 |DOCS_URL|An url to docs where users can find more information about the app's internal code errors.|`https://github.com/DiegoVictor/devradar-api#errors-reference`
-> For Windows users using Docker Toolbox maybe be necessary in your `.env` file set the host of the MongoDB and Redis to `192.168.99.100` (docker machine IP) instead of `localhost` or `127.0.0.1`.
+> For Windows users using Docker Toolbox maybe be necessary in your `.env` file set the host of the MongoDB to `192.168.99.100` (docker machine IP) instead of `localhost` or `127.0.0.1`.
 
 ### Github OAuth App
 First you need to create a [GitHub OAuth App](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app), just remember to configure the field `Authorization callback URL` with the project's [`web`](https://github.com/DiegoVictor/devradar-web) version home page url.
