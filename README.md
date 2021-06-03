@@ -42,10 +42,10 @@ $ npm install
 > Was installed and configured the [`eslint`](https://eslint.org/) and [`prettier`](https://prettier.io/) to keep the code clean and patterned.
 
 ## Configuring
-The application use just one database: [MongoDB](https://www.mongodb.com). For the fastest setup is recommended to use [docker](https://www.docker.com), see below how to setup ever database.
+The application use just one database: [MongoDB](https://www.mongodb.com). For the fastest setup is recommended to use [docker](https://www.docker.com), see below how to setup the database.
 
 ### MongoDB
-Store opportunities sent to Bling, reports and the users utilized by application. You can create a MongoDB container like so:
+Store all application data. You can create a MongoDB container like so:
 ```
 $ docker run --name devradar-mongo -d -p 27017:27017 mongo
 ```
