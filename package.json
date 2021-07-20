@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:server": "nodemon src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
+    "dev:server": "nodemon --legacy_watch src/server.js",
     "test": "jest --runInBand"
   },
   "dependencies": {
