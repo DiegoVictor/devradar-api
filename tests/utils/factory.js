@@ -10,7 +10,7 @@ factory.define('Developer', Developer, {
   avatar_url: faker.image.imageUrl,
   techs: () => {
     const techs = [];
-    for (let i = 0; i < faker.random.number({ min: 1, max: 5 }); i += 1) {
+    for (let i = 0; i < faker.datatype.number({ min: 1, max: 5 }); i += 1) {
       techs.push(faker.random.word());
     }
     return techs;
