@@ -16,7 +16,7 @@ import GetGitHubAccessToken from '../../../src/app/services/GetGitHubAccessToken
 describe('Developer', () => {
   const url = `http://127.0.0.1:${process.env.APP_PORT}/v1`;
   const code = faker.random.alphaNumeric(20);
-  const access_token = faker.random.alphaNumeric(16);
+  const accessToken = faker.random.alphaNumeric(16);
 
   beforeEach(async () => {
     await Developer.deleteMany();
@@ -126,7 +126,7 @@ describe('Developer', () => {
 
     axios
       .onPost('https://github.com/login/oauth/access_token')
-      .reply(200, { access_token })
+      .reply(200, { access_token: accessToken })
       .onGet(`https://api.github.com/user`)
       .reply(200, {
         login: github_username,
@@ -167,7 +167,7 @@ describe('Developer', () => {
 
     axios
       .onPost('https://github.com/login/oauth/access_token')
-      .reply(200, { access_token })
+      .reply(200, { access_token: accessToken })
       .onGet(`https://api.github.com/user`)
       .reply(200, {
         login: github_username,
@@ -202,7 +202,7 @@ describe('Developer', () => {
 
     axios
       .onPost('https://github.com/login/oauth/access_token')
-      .reply(200, { access_token })
+      .reply(200, { access_token: accessToken })
       .onGet(`https://api.github.com/user`)
       .reply(200, {
         login: github_username,
@@ -351,7 +351,7 @@ describe('Developer', () => {
     axios.onGet('https://api.github.com/user').reply(400, 'Bad Request');
 
     const getGitHubUser = new GetGitHubUser();
-    getGitHubUser.execute({ access_token }).catch(err => {
+    getGitHubUser.execute({ access_token: accessToken }).catch(err => {
       expect({ ...err }).toStrictEqual({
         data: {
           code: 532,
