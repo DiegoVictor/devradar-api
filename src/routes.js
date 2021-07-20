@@ -3,7 +3,7 @@ import { Router } from 'express';
 import DeveloperController from './app/controllers/DeveloperController';
 import SessionController from './app/controllers/SessionController';
 import SearchController from './app/controllers/SearchController';
-import BearerAuth from './app/middlewares/BearerAuth';
+import bearerAuth from './app/middlewares/bearerAuth';
 import IdValidator from './app/validators/IdValidator';
 import SearchParamsValidator from './app/validators/SearchParamsValidator';
 import PageValidator from './app/validators/PageValidator';
@@ -23,7 +23,7 @@ app.post('/developers', DeveloperValidator.store, developerController.store);
 
 app.get('/search', SearchParamsValidator, searchController.index);
 
-app.use(BearerAuth);
+app.use(bearerAuth);
 
 app.put('/developers', DeveloperValidator.update, developerController.update);
 app.delete('/developers', developerController.destroy);

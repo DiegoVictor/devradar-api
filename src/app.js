@@ -11,7 +11,7 @@ import http from 'http';
 import './database/mongodb';
 import routes from './routes';
 import { setupWebSocket } from './websocket';
-import RouteAliases from './app/middlewares/RouteAliases';
+import routeAliases from './app/middlewares/routeAliases';
 
 const app = express();
 const server = http.Server(app);
@@ -21,7 +21,7 @@ setupWebSocket(server);
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.use(RouteAliases);
+app.use(routeAliases);
 
 app.use('/v1/', routes);
 
