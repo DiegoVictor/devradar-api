@@ -42,10 +42,13 @@ $ npm install
 > Was installed and configured the [`eslint`](https://eslint.org/) and [`prettier`](https://prettier.io/) to keep the code clean and patterned.
 
 ## Configuring
-The application use just one database: [MongoDB](https://www.mongodb.com). For the fastest setup is recommended to use [docker](https://www.docker.com), see below how to setup the database.
+The application uses just one database: [MongoDB](https://www.mongodb.com).  For the fastest setup is recommended to use [docker-compose](https://docs.docker.com/compose/), you just need to up all services:
+```
+$ docker-compose up -d
+```
 
 ### MongoDB
-Store all application data. You can create a MongoDB container like so:
+Store all application data. If for any reason you would like to create a MongoDB container instead of use `docker-compose`, you can do it by running the following command:
 ```
 $ docker run --name devradar-mongo -d -p 27017:27017 mongo
 ```
@@ -59,10 +62,9 @@ In this file you may configure your MongoDB database connection, JWT settings, t
 |NODE_ENV|App environment.|`development`
 |JWT_SECRET|An alphanumeric random string. Used to create signed tokens.| -
 |JWT_EXPIRATION_TIME|How long time will be the token valid. See [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#usage) repo for more information.|`7d`
-|MONGO_URL|MongoDB's server url.|`mongodb://127.0.0.1:27017/devradar`
+|MONGO_URL|MongoDB's server url.|`mongodb://mongo:27017/devradar`
 |GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET|GitHub's OAuth App credentials. See [GitHub OAuth App](#github-oauth-app) for more information.| -
 |DOCS_URL|An url to docs where users can find more information about the app's internal code errors.|`https://github.com/DiegoVictor/devradar-api#errors-reference`
-> For Windows users using Docker Toolbox maybe be necessary in your `.env` file set the host of the MongoDB to `192.168.99.100` (docker machine IP) instead of `localhost` or `127.0.0.1`.
 
 ### Github OAuth App
 First you need to create a [GitHub OAuth App](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app), just remember to configure the field `Authorization callback URL` with the project's [`web`](https://github.com/DiegoVictor/devradar-web) version home page url.
