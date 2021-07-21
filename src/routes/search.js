@@ -7,6 +7,6 @@ const searchController = new SearchController();
 
 const app = Router();
 
-app.get('/search', SearchParamsValidator, searchController.index);
+app.get('/', SearchParamsValidator, searchController.index);
 
 export default app;

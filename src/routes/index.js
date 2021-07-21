@@ -8,7 +8,6 @@ const app = Router();
 
 app.use('/sessions', sessions);
 app.use('/developers', developers);
-
-app.get('/search', search);
+app.use('/search', search);
 
 export default app;
