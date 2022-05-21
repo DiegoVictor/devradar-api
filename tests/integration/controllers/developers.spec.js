@@ -29,9 +29,7 @@ describe('Developer', () => {
   it('should be able to get a list of developers', async () => {
     const developers = await factory.createMany('Developer', 20);
 
-    const response = await request(app)
-      .get('/v1/developers')
-      .send();
+    const response = await request(app).get('/v1/developers').send();
 
     expect(Array.isArray(response.body)).toBe(true);
     developers
@@ -58,9 +56,7 @@ describe('Developer', () => {
   it('should be able to get a second page of developers', async () => {
     const developers = await factory.createMany('Developer', 20);
 
-    const response = await request(app)
-      .get('/v1/developers?page=2')
-      .send();
+    const response = await request(app).get('/v1/developers?page=2').send();
 
     expect(Array.isArray(response.body)).toBe(true);
     developers
@@ -85,19 +81,10 @@ describe('Developer', () => {
   });
 
   it('should be able to get a developer', async () => {
-    const {
-      _id,
-      name,
-      techs,
-      github_username,
-      bio,
-      avatar_url,
-      location,
-    } = await factory.create('Developer');
+    const { _id, name, techs, github_username, bio, avatar_url, location } =
+      await factory.create('Developer');
 
-    const response = await request(app)
-      .get(`/v1/developers/${_id}`)
-      .send();
+    const response = await request(app).get(`/v1/developers/${_id}`).send();
 
     expect(response.body).toStrictEqual({
       _id: _id.toString(),
@@ -114,14 +101,8 @@ describe('Developer', () => {
   });
 
   it('should be able to store a developer', async () => {
-    const {
-      name,
-      bio,
-      avatar_url,
-      github_username,
-      techs,
-      location,
-    } = await factory.attrs('Developer');
+    const { name, bio, avatar_url, github_username, techs, location } =
+      await factory.attrs('Developer');
     const [longitude, latitude] = location.coordinates;
 
     axios
@@ -156,13 +137,8 @@ describe('Developer', () => {
   });
 
   it('should not be able to store a developer that already is registered', async () => {
-    const {
-      bio,
-      avatar_url,
-      github_username,
-      techs,
-      location,
-    } = await factory.create('Developer');
+    const { bio, avatar_url, github_username, techs, location } =
+      await factory.create('Developer');
     const [longitude, latitude] = location.coordinates;
 
     axios
@@ -189,14 +165,8 @@ describe('Developer', () => {
   });
 
   it('should be able to emit a new developer', async () => {
-    const {
-      name,
-      bio,
-      avatar_url,
-      github_username,
-      techs,
-      location,
-    } = await factory.attrs('Developer');
+    const { name, bio, avatar_url, github_username, techs, location } =
+      await factory.attrs('Developer');
     const [longitude, latitude] = location.coordinates;
     const socket_id = faker.random.alphaNumeric(12);
 
@@ -351,7 +321,7 @@ describe('Developer', () => {
     axios.onGet('https://api.github.com/user').reply(400, 'Bad Request');
 
     const getGitHubUser = new GetGitHubUser();
-    getGitHubUser.execute({ access_token: accessToken }).catch(err => {
+    getGitHubUser.execute({ access_token: accessToken }).catch((err) => {
       expect({ ...err }).toStrictEqual({
         data: {
           code: 532,
@@ -382,7 +352,7 @@ describe('Developer', () => {
       .reply(400, 'Bad Request');
 
     const getGitHubAccessToken = new GetGitHubAccessToken();
-    getGitHubAccessToken.execute({ code }).catch(err => {
+    getGitHubAccessToken.execute({ code }).catch((err) => {
       expect({ ...err }).toStrictEqual({
         data: {
           code: 531,

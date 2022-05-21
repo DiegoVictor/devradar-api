@@ -20,14 +20,8 @@ describe('Session', () => {
   });
 
   it('should be able to logon', async () => {
-    const {
-      name,
-      avatar_url,
-      bio,
-      github_username,
-      location,
-      techs,
-    } = await factory.create('Developer');
+    const { name, avatar_url, bio, github_username, location, techs } =
+      await factory.create('Developer');
 
     axios
       .onPost('https://github.com/login/oauth/access_token')
@@ -37,9 +31,7 @@ describe('Session', () => {
         login: github_username,
       });
 
-    const response = await request(app)
-      .post('/v1/sessions')
-      .send({ code });
+    const response = await request(app).post('/v1/sessions').send({ code });
 
     expect(response.body).toStrictEqual({
       developer: {
