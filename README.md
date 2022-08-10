@@ -69,7 +69,7 @@ In this file you may configure your MongoDB database connection, JWT settings, t
 ### Github OAuth App
 First you need to create a [GitHub OAuth App](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app), just remember to configure the field `Authorization callback URL` with the project's [`web`](https://github.com/DiegoVictor/devradar-web) version home page url.
 
-![GitHub OAuth App](https://raw.githubusercontent.com/DiegoVictor/devradar-api/master/screenshots/github_oauth_app.png)
+![GitHub OAuth App](https://raw.githubusercontent.com/DiegoVictor/devradar-api/main/screenshots/github_oauth_app.png)
 
 > If you are running the application local I recommend you to use [ngrok](https://ngrok.com) to export a url to access the application. (e.g. `https://25752eff.ngrok.io`)
 
