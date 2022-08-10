@@ -5,9 +5,9 @@
 [![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
 [![jest](https://img.shields.io/badge/jest-26.6.3-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
 [![coverage](https://img.shields.io/codecov/c/gh/DiegoVictor/devradar-api?logo=codecov&style=flat-square)](https://codecov.io/gh/DiegoVictor/devradar-api)
-[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/DiegoVictor/devradar-api/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/DiegoVictor/devradar-api/blob/main/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)<br>
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=DevRadar&uri=https%3A%2F%2Fraw.githubusercontent.com%2FDiegoVictor%2Fdevradar-api%2Fmaster%2FInsomnia_2021-07-20.json)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=DevRadar&uri=https%3A%2F%2Fraw.githubusercontent.com%2FDiegoVictor%2Fdevradar-api%2Fmain%2FInsomnia_2021-07-20.json)
 
 Responsible for provide data to the [`web`](https://github.com/DiegoVictor/devradar-web) and [`mobile`](https://github.com/DiegoVictor/devradar-app) front-ends. Permit developers to register yourself using GitHub and to find another developers. The app has pagination, pagination's link header (to previous, next, first and last page), friendly errors, use JWT to logins, validation, also a simple versioning was made.
 
