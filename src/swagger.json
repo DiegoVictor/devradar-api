@@ -15,6 +15,42 @@
   ],
   "components": {
     "schemas": {
+      "Developer": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "techs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "avatar_url": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "github_username": {
+            "type": "string"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
       "Error": {
         "properties": {
           "statusCode": {
