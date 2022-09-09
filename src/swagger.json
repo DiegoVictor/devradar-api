@@ -13,6 +13,55 @@
       "url":"http://localhost:3333/v1"
     }
   ],
+  "paths": {
+    "/sessions": {
+      "post": {
+        "tags": ["Sessions"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "code": "41245847401cd95e1c3c"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/User"
+          },
+          "404": {
+            "description": "Developer does not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "statusCode": 404,
+                  "error": "Not Found",
+                  "message": "Developer does not exists",
+                  "code": 144,
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              }
+            }
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      }
+    },
+  },
   "components": {
     "schemas": {
       "Developer": {
