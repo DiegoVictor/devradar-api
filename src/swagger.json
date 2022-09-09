@@ -70,6 +70,47 @@
           }
         }
       }
+    },
+    "responses": {
+      "User": {
+        "description": "Return a Bearer Token and developer's information",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "developer": {
+                  "$ref": "#/components/schemas/Developer"
+                },
+                "token": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "developer": {
+                "_id": "613514c6606e092854b195a6",
+                "techs": [
+                  "Node.js",
+                  "ReactJS",
+                  "React Native"
+                ],
+                "name": "Diego Victor",
+                "avatar_url": "https://avatars.githubusercontent.com/u/15165349?v=4",
+                "bio": "I have been working with PHP/Laravel and JavaScript/Node.js for +5 years. Recently I started studying ReactJs and React Native :)\r\n",
+                "github_username": "DiegoVictor",
+                "location": {
+                  "coordinates": [
+                    81.6031,
+                    36.6812
+                  ]
+                }
+              },
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzUxNGM2NjA2ZTA5Mjg1NGIxOTVhNiIsImlhdCI6MTYzMDg2OTA0NiwiZXhwIjoxNjMxNDczODQ2fQ.WPAFQvVr4aGleFCggs4EV6T9EjOEZ2bQSwdDLjwgr9A"
+            }
+          }
+        }
+      },
     }
   }
 }
