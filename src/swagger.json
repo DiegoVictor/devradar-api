@@ -111,6 +111,64 @@
           }
         }
       },
+      "ServiceUnavailable": {
+        "description": "Service Unavailable",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Error"
+                },
+                {
+                  "title": "Error",
+                  "properties": {
+                    "details": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer"
+                        },
+                        "statusText": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "examples": {
+              "An error ocurred while trying to exchange a GitHub's access token": {
+                "value": {
+                  "statusCode": 503,
+                  "error": "Service Unavailable",
+                  "message": "An error ocurred while trying to exchange a GitHub's access token",
+                  "code": 531,
+                  "details": {
+                    "status": 404,
+                    "statusText": "Not Found"
+                  },
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              },
+              "An error ocurred while trying to retrieve the user from GitHub": {
+                "value": {
+                  "statusCode": 503,
+                  "error": "Service Unavailable",
+                  "message": "An error ocurred while trying to retrieve the user from GitHub",
+                  "code": 532,
+                  "details": {
+                    "status": 401,
+                    "statusText": "Unauthorized"
+                  },
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
