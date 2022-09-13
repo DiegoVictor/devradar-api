@@ -220,6 +220,105 @@
           }
         }
       },
+      "post": {
+        "tags": ["Developers"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "techs",
+                  "latitude",
+                  "longitude"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "techs": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
+                  }
+                }
+              },
+              "example": {
+                "code": "fd674539592cba6cd49c",
+                "techs": "Node.js, ReactJS, React Native",
+                "latitude": 36.6812,
+                "longitude": 81.6031
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Create new developers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "developer": {
+                      "$ref": "#/components/schemas/Developer"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "developer": {
+                    "name": "Diego Victor",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/15165349?v=4",
+                    "bio": "I have been working with PHP/Laravel and JavaScript/Node.js for +5 years. Recently I started studying ReactJs and React Native :)\r\n",
+                    "github_username": "DiegoVictor",
+                    "techs": [
+                      "Node.js",
+                      "ReactJS",
+                      "React Native"
+                    ],
+                    "location": {
+                      "coordinates": [
+                        81.6031,
+                        36.6812
+                      ]
+                    },
+                    "_id": "613514c6606e092854b195a6"
+                  },
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzUxNGM2NjA2ZTA5Mjg1NGIxOTVhNiIsImlhdCI6MTYzMDg2ODY3OCwiZXhwIjoxNjMxNDczNDc4fQ.ajUEtNnbmJql1hLWl5PT7sk-6c9_JGPy4HVDBEhVWXw"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "You are already registered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "statusCode": 400,
+                  "error": "Bad Request",
+                  "message": "You are already registered",
+                  "code": 140,
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              }
+            }
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      },
     },
   },
   "components": {
