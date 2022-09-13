@@ -319,6 +319,75 @@
           }
         }
       },
+      "put": {
+        "tags": ["Developers"],
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {},
+              "example": {
+                "techs": "Node.js, ReactJS",
+                "name": "Diego Victor",
+                "avatar_url": "https://avatars.githubusercontent.com/u/15165349?v=4",
+                "bio": "Dolorem dignissimos sint. Porro ab repellendus ut nostrum cupiditate eaque cumque. Aperiam aut ut ipsa temporibus voluptas quo. Non animi quia quidem dolor aliquid porro.",
+                "longitude": 17.6372,
+                "latitude": 33.6976
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update one developer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Developer"
+                },
+                "example": {
+                  "_id": "613514c6606e092854b195a6",
+                  "techs": [
+                    "Node.js",
+                    "ReactJS"
+                  ],
+                  "name": "Diego Victor",
+                  "avatar_url": "https://avatars.githubusercontent.com/u/15165349?v=4",
+                  "bio": "Dolorem dignissimos sint. Porro ab repellendus ut nostrum cupiditate eaque cumque. Aperiam aut ut ipsa temporibus voluptas quo. Non animi quia quidem dolor aliquid porro.",
+                  "github_username": "DiegoVictor",
+                  "location": {
+                    "coordinates": [
+                      17.6372,
+                      33.6976
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Developer does not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "statusCode": 404,
+                  "error": "Not Found",
+                  "message": "Developer does not exists",
+                  "code": 144,
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              }
+            }
+          }
+        }
+      },
     },
   },
   "components": {
