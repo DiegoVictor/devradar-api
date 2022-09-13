@@ -388,6 +388,36 @@
           }
         }
       },
+      "delete": {
+        "tags": ["Developers"],
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Remove one developer"
+          },
+          "404": {
+            "description": "Developer does not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "statusCode": 404,
+                  "error": "Not Found",
+                  "message": "Developer does not exists",
+                  "code": 144,
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              }
+            }
+          }
+        }
+      }
     },
   },
   "components": {
