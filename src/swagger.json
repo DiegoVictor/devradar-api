@@ -419,6 +419,82 @@
         }
       }
     },
+    "/developers/{id}": {
+      "get": {
+        "tags": ["Developer"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "613514c6606e092854b195a6"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return one developer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Developer"
+                    },
+                    {
+                      "title": "Developer",
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "_id": "613514c6606e092854b195a6",
+                  "techs": [
+                    "Node.js",
+                    "ReactJS",
+                    "React Native"
+                  ],
+                  "name": "Diego Victor",
+                  "avatar_url": "https://avatars.githubusercontent.com/u/15165349?v=4",
+                  "bio": "I have been working with PHP/Laravel and JavaScript/Node.js for +5 years. Recently I started studying ReactJs and React Native :)\r\n",
+                  "github_username": "DiegoVictor",
+                  "location": {
+                    "coordinates": [
+                      81.6031,
+                      36.6812
+                    ]
+                  },
+                  "url": "http://localhost:3333/v1/developers/613514c6606e092854b195a6"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Developer does not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "statusCode": 404,
+                  "error": "Not Found",
+                  "message": "Developer does not exists",
+                  "code": 144,
+                  "docs": "https://github.com/DiegoVictor/devradar-api#errors-reference"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
