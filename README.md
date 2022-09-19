@@ -147,6 +147,7 @@ GET http://localhost:3333/v1/developers
 |route|HTTP Method|pagination|params|description|auth method
 |:---|:---:|:---:|:---:|:---|:---:
 |`/sessions`|POST|:x:|Body with user's `code`.|Authenticates developer, return a Bearer Token and developer's information.|:x:
+|`/search`|GET|:x:|`techs`, `latitude` and `longitude` query parameters.|Search nearest developers with the same techs.|:x:
 |`/developers`|GET|:heavy_check_mark:|`page` query parameter.|List developers.|:x:
 |`/developers/:id`|GET|:x:|`:id` of the developer.|Return one developer.|:x:
 |`/developers`|POST|:x:|Body with developer's `techs`, `latitude`, `longitude` and `code`.|Create new developers.|:x:
