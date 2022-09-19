@@ -1,10 +1,10 @@
 import { factory } from 'factory-girl';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 import Developer from '../../src/app/models/Developer';
 
 factory.define('Developer', Developer, {
-  name: faker.name.findName,
+  name: faker.name.fullName,
   github_username: faker.internet.userName,
   bio: faker.lorem.paragraph,
   avatar_url: faker.image.imageUrl,

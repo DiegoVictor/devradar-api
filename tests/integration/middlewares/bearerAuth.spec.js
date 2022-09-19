@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import jwt from 'jsonwebtoken';
 
 import bearerAuth from '../../../src/app/middlewares/bearerAuth';

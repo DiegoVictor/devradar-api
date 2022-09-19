@@ -1,6 +1,6 @@
 import request from 'supertest';
 import Mongoose from 'mongoose';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 import { axios } from '../../../mocks/axios';
 import app from '../../../src/app';
@@ -273,7 +273,7 @@ describe('Developer', () => {
       .put(`/v1/developers`)
       .set('Authorization', `Bearer ${token}`)
       .expect(404)
-      .send({ name: faker.name.findName() });
+      .send({ name: faker.name.fullName() });
 
     expect(body).toMatchObject({
       statusCode: 404,
