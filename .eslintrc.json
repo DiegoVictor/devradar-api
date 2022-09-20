@@ -1,29 +1,28 @@
 {
   "env": {
-    "es6": true,
+    "es2021": true,
     "node": true,
     "jest": true
   },
-  "extends": ["airbnb-base", "prettier"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "babel-eslint",
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
     "import/prefer-default-export": "off",
     "camelcase": "off",
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
-    "no-unused-vars": ["error", {
-      "argsIgnorePattern": "next"
-    }],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "next"
+      }
+    ],
     "no-param-reassign": "off",
     "default-case": "off"
   }
