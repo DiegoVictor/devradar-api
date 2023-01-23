@@ -9,10 +9,7 @@ jobs:
       - checkout
       - node/install-packages:
           cache-path: ~/devradar-api/node_modules
-      - run:
-          command: npm run test
-          environment:
-            MONGOMS_VERSION: 4.2.14
+      - run: npm run test
       - codecov/upload:
           file: tests/coverage/*.json
 workflows:
