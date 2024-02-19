@@ -7,9 +7,7 @@ import helmet from 'helmet';
 import { isBoom } from '@hapi/boom';
 import { errors } from 'celebrate';
 import http from 'http';
-import swagger from 'swagger-ui-express';
 
-import swaggerDocument from './swagger.json';
 import './database/mongodb';
 import routes from './routes';
 import { setupWebSocket } from './websocket';
@@ -25,7 +23,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routeAliases);
 
-app.use('/docs', swagger.serve, swagger.setup(swaggerDocument));
 app.use('/v1/', routes);
 
 app.use(errors());
