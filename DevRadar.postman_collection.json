@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "40a97dc6-c3ab-41a9-a161-fd0e8fbf5b1f",
+		"name": "DevRadar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4346128"
+	},
+	"item": [
+		{
+			"name": "Github",
+			"item": [
+				{
+					"name": "Authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://github.com/login/oauth/authorize?client_id=Iv1.9c1d13c67662c72d&redirect_uri=http://localhost:3000",
+							"protocol": "https",
+							"host": [
+								"github",
+								"com"
+							],
+							"path": [
+								"login",
+								"oauth",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "Iv1.9c1d13c67662c72d"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:3000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Session",
+			"item": [
+				{
+					"name": "Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"if (response.token) {\r",
+									"    const { token } = response;\r",
+									"    pm.collectionVariables.set('token', token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\": \"41245847401cd95e1c3c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sessions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/search?latitude=36.6812&longitude=81.6031&techs=ReactJS, Node.js",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "36.6812"
+								},
+								{
+									"key": "longitude",
+									"value": "81.6031"
+								},
+								{
+									"key": "techs",
+									"value": "ReactJS, Node.js"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Developer",
+			"item": [
+				{
+					"name": "Index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"if (Array.isArray(response) && response.length > 0) {\r",
+									"    const [{ _id }] = response;\r",
+									"    pm.collectionVariables.set('developer_id', _id);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/developers?page=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"developers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/developers/{{developer_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"developers",
+								"{{developer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\": \"fd674539592cba6cd49c\",\n\t\"techs\": \"Node.js, ReactJS, React Native\",\n\t\"latitude\": 36.6812,\n\t\"longitude\": 81.6031\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/developers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"developers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"techs\": \"Node.js, ReactJS\",\n\t\"name\": \"Diego Victor\",\n\t\"avatar_url\": \"https://avatars.githubusercontent.com/u/15165349?v=4\",\n\t\"bio\": \"Dolorem dignissimos sint. Porro ab repellendus ut nostrum cupiditate eaque cumque. Aperiam aut ut ipsa temporibus voluptas quo. Non animi quia quidem dolor aliquid porro.\",\n\t\"longitude\": 17.6372,\n\t\"latitude\": 33.6976\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/developers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"developers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/developers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"developers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3333/v1"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "developer_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
