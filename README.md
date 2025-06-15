@@ -15,8 +15,8 @@ Responsible for provide data to the [`web`](https://github.com/DiegoVictor/devra
 ## Table of Contents
 * [Installing](#installing)
   * [Configuring](#configuring)
-    * [MongoDB](#mongodb)
     * [.env](#env)
+    * [MongoDB](#mongodb)
     * [GitHub OAuth App](#github-oauth-app)
 * [Usage](#usage)
   * [Error Handling](#error-handling)
@@ -48,12 +48,6 @@ The application uses just one database: [MongoDB](https://www.mongodb.com).  For
 $ docker-compose up -d
 ```
 
-### MongoDB
-Store all application data. If for any reason you would like to create a MongoDB container instead of use `docker-compose`, you can do it by running the following command:
-```
-$ docker run --name devradar-mongo -d -p 27017:27017 mongo
-```
-
 ### .env
 In this file you may configure your MongoDB database connection, JWT settings, the environment, app's port, url to documentation (this will be returned with error responses, see [error section](#error-handling)) and GitHub's OAuth App keys. Rename the `.env.example` in the root directory to `.env` then just update with your settings.
 
@@ -66,6 +60,12 @@ In this file you may configure your MongoDB database connection, JWT settings, t
 |MONGO_URL|MongoDB's server url.|`mongodb://mongo:27017/devradar`
 |GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET|GitHub's OAuth App credentials. See [GitHub OAuth App](#github-oauth-app) for more information.| -
 |DOCS_URL|An url to docs where users can find more information about the app's internal code errors.|`https://github.com/DiegoVictor/devradar-api#errors-reference`
+
+### MongoDB
+Store all application data. If for any reason you would like to create a MongoDB container instead of use `docker-compose`, you can do it by running the following command:
+```
+$ docker run --name devradar-mongo -d -p 27017:27017 mongo
+```
 
 ### Github OAuth App
 First you need to create a [GitHub OAuth App](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app), just remember to configure the field `Authorization callback URL` with the project's [`web`](https://github.com/DiegoVictor/devradar-web) version home page url.
