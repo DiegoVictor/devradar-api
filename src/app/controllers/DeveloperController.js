@@ -76,7 +76,7 @@ class DeveloperController {
     const { id } = req;
 
     const developer = await existsDeveloper.execute({ id });
-    await developer.remove();
+    await developer.deleteOne();
 
     return res.sendStatus(204);
   }
