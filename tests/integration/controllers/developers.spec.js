@@ -232,9 +232,8 @@ describe('Developer', () => {
 
   it('should be able to update a developer', async () => {
     const { _id, github_username } = await factory.create('Developer');
-    const { name, avatar_url, bio, techs, location } = await factory.attrs(
-      'Developer'
-    );
+    const { name, avatar_url, bio, techs, location } =
+      await factory.attrs('Developer');
     const token = jwtoken(_id);
     const [longitude, latitude] = location.coordinates;
 
