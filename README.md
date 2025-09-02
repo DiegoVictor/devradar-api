@@ -1,10 +1,9 @@
 # [API] DevRadar
 [![CircleCI](https://img.shields.io/circleci/build/github/DiegoVictor/devradar-api?style=flat-square&logo=circleci)](https://app.circleci.com/pipelines/github/DiegoVictor/devradar-api)
-[![mongodb](https://img.shields.io/badge/mongodb-4.12.1-13aa52?style=flat-square&logo=mongodb&logoColor=white)](https://mongodb.com/)
-[![nodemon](https://img.shields.io/badge/nodemon-2.0.20-76d04b?style=flat-square&logo=nodemon)](https://nodemon.io/)
-[![eslint](https://img.shields.io/badge/eslint-8.23.1-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
-[![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
-[![jest](https://img.shields.io/badge/jest-29.0.3-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
+[![mongodb](https://img.shields.io/badge/mongodb-6.18.0-13aa52?style=flat-square&logo=mongodb&logoColor=white)](https://mongodb.com/)
+[![nodemon](https://img.shields.io/badge/nodemon-3.1.10-76d04b?style=flat-square&logo=nodemon)](https://nodemon.io/)
+[![eslint](https://img.shields.io/badge/eslint-9.34.0-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
+[![jest](https://img.shields.io/badge/jest-30.1.2-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
 [![coverage](https://img.shields.io/codecov/c/gh/DiegoVictor/devradar-api?logo=codecov&style=flat-square)](https://codecov.io/gh/DiegoVictor/devradar-api)
 [![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://raw.githubusercontent.com/DiegoVictor/devradar-api/main/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)<br>
