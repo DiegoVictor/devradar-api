@@ -15,11 +15,14 @@ class DeveloperController {
     const { page = 1 } = req.query;
     const limit = 10;
 
-    const developers = await Developer.find(null, {
-      'location._id': false,
-      'location.type': false,
-      __v: false,
-    })
+    const developers = await Developer.find(
+      {},
+      {
+        'location._id': false,
+        'location.type': false,
+        __v: false,
+      }
+    )
       .sort('github_username')
       .skip((page - 1) * limit)
       .limit(limit)
