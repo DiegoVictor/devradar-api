@@ -4,22 +4,22 @@ import { faker } from '@faker-js/faker';
 import Developer from '../../src/app/models/Developer';
 
 factory.define('Developer', Developer, {
-  name: faker.name.fullName,
-  github_username: faker.internet.userName,
+  name: faker.person.fullName,
+  github_username: faker.internet.username,
   bio: faker.lorem.paragraph,
-  avatar_url: faker.image.imageUrl,
+  avatar_url: faker.image.url,
   techs: () => {
     const techs = [];
-    for (let i = 0; i < faker.datatype.number({ min: 1, max: 5 }); i += 1) {
-      techs.push(faker.random.word());
+    for (let i = 0; i < faker.number.int({ min: 1, max: 5 }); i += 1) {
+      techs.push(faker.lorem.word());
     }
     return techs;
   },
   location: {
     type: 'Point',
     coordinates: [
-      Number(faker.address.longitude()),
-      Number(faker.address.latitude()),
+      Number(faker.location.longitude()),
+      Number(faker.location.latitude()),
     ],
   },
 });

@@ -19,8 +19,8 @@ describe('Search', () => {
 
   it('should be able to get a list of near developers', async () => {
     const techs = faker.lorem.word();
-    const longitude = faker.address.longitude();
-    const latitude = faker.address.latitude();
+    const longitude = faker.location.longitude();
+    const latitude = faker.location.latitude();
 
     const developers = await factory.createMany('Developer', 3, {
       techs: [techs],

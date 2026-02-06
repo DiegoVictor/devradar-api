@@ -8,8 +8,8 @@ import Developer from '../../../src/app/models/Developer';
 import { axios } from '../../../mocks/axios';
 
 describe('Session', () => {
-  const code = faker.random.alphaNumeric(20);
-  const accessToken = faker.random.alphaNumeric(16);
+  const code = faker.string.alphanumeric(20);
+  const accessToken = faker.string.alphanumeric(16);
 
   beforeEach(async () => {
     await Developer.deleteMany();

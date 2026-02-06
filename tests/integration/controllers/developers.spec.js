@@ -15,8 +15,8 @@ import GetGitHubAccessToken from '../../../src/app/services/GetGitHubAccessToken
 
 describe('Developer', () => {
   const url = `http://127.0.0.1:${process.env.APP_PORT}/v1`;
-  const code = faker.random.alphaNumeric(20);
-  const accessToken = faker.random.alphaNumeric(16);
+  const code = faker.string.alphanumeric(20);
+  const accessToken = faker.string.alphanumeric(16);
 
   beforeEach(async () => {
     await Developer.deleteMany();
@@ -168,7 +168,7 @@ describe('Developer', () => {
     const { name, bio, avatar_url, github_username, techs, location } =
       await factory.attrs('Developer');
     const [longitude, latitude] = location.coordinates;
-    const socket_id = faker.random.alphaNumeric(12);
+    const socket_id = faker.string.alphanumeric(12);
 
     axios
       .onPost('https://github.com/login/oauth/access_token')
@@ -272,7 +272,7 @@ describe('Developer', () => {
       .put(`/v1/developers`)
       .set('Authorization', `Bearer ${token}`)
       .expect(404)
-      .send({ name: faker.name.fullName() });
+      .send({ name: faker.person.fullName() });
 
     expect(body).toMatchObject({
       statusCode: 404,
